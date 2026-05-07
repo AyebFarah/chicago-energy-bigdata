@@ -1,0 +1,54 @@
+Adult Education	106.19
+Ambulatory Surgical Center	224.73
+Automobile Dealership	97.56
+Bank Branch	108.45
+College/University	184.74
+Commerce de détail	76.3
+Convention Center	104.87
+Courthouse	82.08
+Data Center	695.21
+Distribution Center	54.75
+Enclosed Mall	127.72
+Financial Office	104.94
+Fitness Center/Health Club/Gym	158.39
+Hospital (General Medical & Surgical)	255.88
+Hotel	124.75
+Ice/Curling Rink	180.6
+Indoor Arena	84.24
+K-12 School	77.2
+Laboratory	331.09
+Library	133.29
+Lifestyle Center	62.0
+Medical Office	116.6
+Mixed Use Property	100.38
+Movie Theater	145.25
+Multifamily Housing	78.1
+Museum	128.02
+Office	78.44
+Other	85.94
+Other - Education	103.91
+Other - Entertainment/Public Assembly	90.05
+Other - Lodging/Residential	694.38
+Other - Mall	105.2
+Other - Public Services	126.63
+Other - Recreation	120.27
+Other - Services	123.68
+Other - Specialty Hospital	186.42
+Outpatient Rehabilitation/Physical Therapy	149.62
+Performing Arts	238.74
+Pre-school/Daycare	70.68
+Prison/Incarceration	120.33
+Repair Services (Vehicle, Shoe, Locksmith, etc.)	49.49
+Residence Hall/Dormitory	84.14
+Residential Care Facility	126.25
+Retail Store	100.1
+Senior Care Community	120.05
+Senior Living Community	113.52
+Social/Meeting Hall	120.45
+Stadium (Open)	81.0
+Strip Mall	183.1
+Supermarket/Grocery Store	254.52
+Urgent Care/Clinic/Other Outpatient	84.01
+Vehicle Dealership	115.95
+Wholesale Club/Supercenter	121.89
+Worship Facility	194.56
