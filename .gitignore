@@ -1,0 +1,29 @@
+# Maven
+target/
+*.class
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# Dataset (trop lourd)
+dataset/*.csv
+dataset/*.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+
+# Logs
+*.log
+logs/
