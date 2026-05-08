@@ -15,21 +15,14 @@ public class EnergyAnalysis {
         SparkSession spark = SparkSession.builder()
                 .appName("ChicagoEnergyAnalysis")
                 .getOrCreate();
-
         spark.sparkContext().setLogLevel("ERROR");
-
-        // =========================
         // LOAD DATASET
-        // =========================
         Dataset<Row> df = spark.read()
                 .option("header", "true")
                 .option("inferSchema", "false")
                 .option("escape", "\"")
                 .csv(args[0]);
-
-        // =========================
         // CLEANING + CASTING
-        // =========================
         df = df
                 .withColumn("SiteEUI", col("`Site EUI (kBtu/sq ft)`").cast("double"))
                 .withColumn("GHG", col("`Total GHG Emissions (Metric Tons CO2e)`").cast("double"))
@@ -40,12 +33,8 @@ public class EnergyAnalysis {
                 .withColumn("Gas", col("`Natural Gas Use (kBtu)`").cast("double"));
 
         df.cache();
-
         System.out.println("TOTAL ROWS = " + df.count());
-
-        // =========================
         // ANALYSE 1
-        // =========================
         Dataset<Row> eui = df
                 .filter(col("SiteEUI").isNotNull())
                 .groupBy("Primary Property Type")
@@ -56,10 +45,7 @@ public class EnergyAnalysis {
         eui.show(false);
         eui.write().mode("overwrite")
                 .csv(args[1] + "/analysis1");
-
-        // =========================
         // ANALYSE 2
-        // =========================
         Dataset<Row> ghg = df
                 .filter(col("GHG").isNotNull())
                 .groupBy("CommunityNorm")
@@ -70,9 +56,7 @@ public class EnergyAnalysis {
         ghg.write().mode("overwrite")
                 .csv(args[1] + "/analysis2");
 
-        // =========================
         // ANALYSE 3
-        // =========================
         Dataset<Row> star = df
                 .filter(col("EnergyStar").isNotNull())
                 .groupBy("Year")
@@ -82,10 +66,7 @@ public class EnergyAnalysis {
         star.show(false);
         star.write().mode("overwrite")
                 .csv(args[1] + "/analysis3");
-
-        // =========================
         // ANALYSE 4
-        // =========================
         Dataset<Row> top = df
                 .filter(col("GHG").isNotNull())
                 .orderBy(desc("GHG"))
@@ -94,21 +75,16 @@ public class EnergyAnalysis {
         top.show(false);
         top.write().mode("overwrite")
                 .csv(args[1] + "/analysis4");
-
-        // =========================
         // ANALYSE 5
-        // =========================
         Dataset<Row> mix = df
                 .groupBy("Primary Property Type")
                 .agg(
                         avg("Electricity").alias("avg_elec"),
                         avg("Gas").alias("avg_gas")
                 );
-
         mix.show(false);
         mix.write().mode("overwrite")
                 .csv(args[1] + "/analysis5");
-
         spark.stop();
     }
 }

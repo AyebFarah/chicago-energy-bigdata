@@ -5,14 +5,6 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-
-/**
- * Reducer Job 3 — Somme les émissions GHG
- * par Community Area
- *
- * Entrée  : (community, [ghg1, ghg2, ...])
- * Sortie  : (community, total_ghg)
- */
 public class GHGReducer
         extends Reducer<Text, DoubleWritable,
         Text, DoubleWritable> {

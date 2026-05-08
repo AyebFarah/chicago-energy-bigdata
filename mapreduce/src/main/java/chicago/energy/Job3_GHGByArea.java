@@ -18,19 +18,14 @@ public class Job3_GHGByArea {
             );
             System.exit(1);
         }
-
         Configuration conf = new Configuration();
-
         Job job = Job.getInstance(
                 conf,
                 "Total GHG Emissions by Community Area"
         );
-
         job.setJarByClass(Job3_GHGByArea.class);
-
         job.setMapperClass(GHGMapper.class);
         job.setReducerClass(GHGReducer.class);
-
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(DoubleWritable.class);
 
