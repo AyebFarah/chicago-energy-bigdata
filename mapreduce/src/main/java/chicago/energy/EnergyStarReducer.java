@@ -6,13 +6,6 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
-/**
- * Reducer Job 2 — Compte le nombre de bâtiments
- * ayant un ENERGY STAR Score valide par année
- *
- * Entrée  : (year, [1,1,1,...])
- * Sortie  : (year, total)
- */
 public class EnergyStarReducer
         extends Reducer<Text, IntWritable, Text, IntWritable> {
 

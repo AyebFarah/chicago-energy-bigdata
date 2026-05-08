@@ -8,53 +8,33 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-/**
- * Job 1 — Average Site EUI by Building Type
- *
- * Objectif :
- * Identifier les types de bâtiments les plus énergivores
- * à Chicago.
- */
 public class Job1_EnergyByType {
-
     public static void main(String[] args) throws Exception {
-
         if (args.length < 2) {
             System.err.println(
                     "Usage: Job1_EnergyByType <input> <output>"
             );
             System.exit(1);
         }
-
         Configuration conf = new Configuration();
-
         Job job = Job.getInstance(
                 conf,
                 "Average Site EUI by Building Type"
         );
-
         job.setJarByClass(Job1_EnergyByType.class);
-
         job.setMapperClass(EnergyMapper.class);
-
         job.setReducerClass(EnergyAvgReducer.class);
-
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(DoubleWritable.class);
-
-        // Un seul fichier résultat
         job.setNumReduceTasks(1);
-
         FileInputFormat.addInputPath(
                 job,
                 new Path(args[0])
         );
-
         FileOutputFormat.setOutputPath(
                 job,
                 new Path(args[1])
         );
-
         System.exit(
                 job.waitForCompletion(true) ? 0 : 1
         );
